@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PyMesh"
+version = "0.1.0-alpha"
+description = "Python library for meshes conversions and utilities for colouring the meshes."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+
+dependencies = ["numpy>=2.1.1"]
