@@ -2,13 +2,20 @@ from .convertor import Convertor
 from .mesh_types import InputMeshFile, OutputMeshFile, FileFormat
 from typing import Tuple
 from pymeshlab import MeshSet
+from utils import Debugger
+
 
 class PyMeshLabConvertor(Convertor):
-    
+
     def __init__(self) -> None:
         pass
-    
-    def convert_mesh(self, input_file: InputMeshFile, output_file: OutputMeshFile):
+
+    def convert_mesh(
+        self,
+        input_file: InputMeshFile,
+        output_file: OutputMeshFile,
+        debugger: Debugger | None = None,
+    ):
 
         mesh_set = MeshSet()
         full_input_path = input_file.get_full_import_filepath()
