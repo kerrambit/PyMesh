@@ -113,7 +113,7 @@ def get_output_mesh_file(
 def main():
 
     parser = argparse.ArgumentParser(
-        prog="PyMesh",
+        prog="PyMesh.Convertor",
         description="Python library for meshes conversions and utilities for colouring the meshes.",
     )
     generate_arguments(parser)
