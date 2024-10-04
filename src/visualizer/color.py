@@ -1,5 +1,5 @@
 import numpy as np
-
+from typing import Tuple
 
 class Color:
 
@@ -19,3 +19,6 @@ class Color:
         return np.array(
             [self.red / 256, self.green / 256, self.blue / 256, self.alpha / 256]
         )
+        
+    def get_rgb_tuple(self) -> Tuple[float, float, float]:
+        return self.red, self.green, self.blue
