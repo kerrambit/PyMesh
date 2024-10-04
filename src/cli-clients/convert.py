@@ -98,9 +98,9 @@ def get_output_mesh_file(
         output = STLOutputMeshFile(
             output_folder,
             output_file,
-            binary=True,
-            colormode=True,
-            save_face_color=True,
+            binary=False,
+            colormode=False,
+            save_face_color=False,
         )
     elif output_format == FileFormat.OBJ:
         output = OBJOutputMeshFile(output_folder, output_file)
