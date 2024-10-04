@@ -1,6 +1,7 @@
 from enum import Enum
 from pathlib import Path
 from abc import ABC
+from typing import List
 
 
 class FileFormat(Enum):
@@ -14,6 +15,19 @@ class FileFormat(Enum):
             return "obj"
         else:
             return "unkown"
+
+    @staticmethod
+    def get_string_array() -> List[str]:
+        return [str(format_) for format_ in FileFormat]
+
+    @staticmethod
+    def get_file_format_from_string(token: str) -> "FileFormat":
+        if token in {"STL", "stl"}:
+            return FileFormat.STL
+        elif token in {"OBJ", "obj"}:
+            return FileFormat.OBJ
+        else:
+            return FileFormat.STL
 
 
 class InputMeshFile(ABC):
@@ -30,7 +44,7 @@ class InputMeshFile(ABC):
 
 
 class STLInputMeshFile(InputMeshFile):
-    def __init__(self, mesh_file_path: Path, unify_vertices: True) -> None:
+    def __init__(self, mesh_file_path: Path, unify_vertices: bool = True) -> None:
         super().__init__(FileFormat.STL, mesh_file_path)
         self.unify_vertices = unify_vertices
 
