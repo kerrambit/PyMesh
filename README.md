@@ -1,6 +1,8 @@
 # PyMesh
 Python library for meshes conversions and utilities for colouring the meshes.
 
+[![PyMesh.Visualizer video](docs/pumpkin-example-photo.png)](docs/pumpkin-example-video.mp4)
+
 ## Build and launch
 
 Clone the repo.
