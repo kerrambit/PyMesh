@@ -42,7 +42,7 @@ python3 -m pytest
 
 
 *Create a publicly available google colab notebook (or alternative) with your solution so that anyone can run the code and obtain the visualization right in the web browser.*
-- TODO
+- Solution is accesible via *GitHub Gist* service. [Open this link](https://gist.github.com/kerrambit/3b44d7edcf6197d38d608bb58708b225) and you can open and run the code inside *Google Colab*.
 
 *Find errors and mistakes related to the task content itself (if any) and suggest possible improvements.*
 - The only thing is that I am not sure if the attached .obj file could be publicly shared inside the GitHub repository (so the user can run the example script without any problem).

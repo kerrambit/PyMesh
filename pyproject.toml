@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "PyMesh"
-version = "0.1.0-alpha"
+version = "0.2.0-alpha"
 description = "Python library for meshes conversions and utilities for colouring the meshes."
 readme = "README.md"
 license = { file = "LICENSE" }
