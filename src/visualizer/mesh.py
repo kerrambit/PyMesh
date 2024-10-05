@@ -7,6 +7,7 @@ class Mesh:
     def __init__(self, file_path: Path) -> None:
         self.__file_path = file_path
         self.__mesh = pyvista.read(str(self.__file_path))
+        self.edges_visible = False
 
     def get_cell_centers(self):
         return self.__mesh.cell_centers()

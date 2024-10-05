@@ -1,7 +1,11 @@
+from visualizer import Color, Mesh, Camera, Coordinate, Light, Plotter
 import numpy as np
-import pyvista
-from visualizer import Color, Mesh, Camera, Coordinate, Light
 import sys
+
+ORANGE = Color(255, 140, 0).get_normalized_color_array()
+DARK_ORANGE = Color(248, 130, 0).get_normalized_color_array()
+GREEN = Color(1, 50, 32).get_normalized_color_array()
+BROWN = Color(111, 78, 55).get_normalized_color_array()
 
 
 def main():
@@ -15,9 +19,9 @@ def main():
     mesh_filepath = sys.argv[1]
     window_title = sys.argv[2]
 
-    # -------------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------------- #
 
-    plotter = pyvista.Plotter(title=window_title)
+    plotter = Plotter(window_title)
 
     mesh = Mesh(mesh_filepath)
     mesh.rotate_x(-90)
@@ -25,19 +29,15 @@ def main():
     mesh.compute_normals()
 
     colors = np.zeros((mesh.get_cells_count(), 4))
-    orange = Color(255, 140, 0).get_normalized_color_array()
-    dark_orange = Color(248, 130, 0).get_normalized_color_array()
-    green = Color(1, 50, 32).get_normalized_color_array()
-    brown = Color(111, 78, 55).get_normalized_color_array()
 
+    x_radius_for_stalk = 5
     y_min_for_stalk = -57
     y_max_for_stalk = -50
-    x_radius_for_stalk = 5
     z_radius_for_stalk = 5
 
+    x_radius_for_lower_stalk = 2.5
     y_min_for_lower_stalk = -95
     y_max_for_lower_stalk = -91.5
-    x_radius_for_lower_stalk = 2.5
     z_radius_for_lower_stalk = 2.5
 
     for i, center in enumerate(mesh.get_cell_centers().points):
@@ -49,9 +49,9 @@ def main():
             x_offset = abs(x - mesh.get_center_of_mesh()[0])
             z_offset = abs(z - mesh.get_center_of_mesh()[2])
             if x_offset < x_radius_for_stalk and z_offset < z_radius_for_stalk:
-                colors[i] = green
+                colors[i] = GREEN
             else:
-                colors[i] = dark_orange
+                colors[i] = DARK_ORANGE
         elif y_min_for_lower_stalk <= y <= y_max_for_lower_stalk:
             x_offset = abs(x - mesh.get_center_of_mesh()[0])
             z_offset = abs(z - mesh.get_center_of_mesh()[2])
@@ -59,63 +59,26 @@ def main():
                 x_offset < x_radius_for_lower_stalk
                 and z_offset < z_radius_for_lower_stalk
             ):
-                colors[i] = brown
+                colors[i] = BROWN
             else:
-                colors[i] = dark_orange
+                colors[i] = DARK_ORANGE
         else:
-            colors[i] = orange
+            colors[i] = ORANGE
 
-    # plotter.add_background_image("background.png")
     key = "colors"
     mesh.assign_cell_data(key, colors)
-    plotter.add_mesh(
-        mesh.get_mesh_copy(), scalars=key, rgb=True, show_edges=False, line_width=1
-    )
-    plotter.background_color = Color(0, 0, 0).get_normalized_color_array()
+    plotter.add_mesh(mesh, scalar_key=key)
+    plotter.set_background_color(Color(0, 0, 0))
 
     camera = Camera(Coordinate(-90.0, 70.0, 130.0), Coordinate(-15.0, -40.0, 20.0))
-    plotter.camera = camera.camera
-
-    """
-    # y-axe line
-    start_point = np.array([-2, -200, 0]) 
-    end_point = np.array([-2, 150, 0]) 
-    line = pyvista.Line(start_point, end_point)
-    plotter.add_mesh(line, color="green", line_width=5)
-    arrow = pyvista.Arrow(start_point, end_point - start_point, scale=10)
-    plotter.add_mesh(arrow, color="red")
-
-    # y-axe line
-    start_point = np.array([-6.5, -200, 0]) 
-    end_point = np.array([-6.5, 150, 0]) 
-    line = pyvista.Line(start_point, end_point)
-    plotter.add_mesh(line, color="green", line_width=5)
-    arrow = pyvista.Arrow(start_point, end_point - start_point, scale=10)
-    plotter.add_mesh(arrow, color="red")
-
-    # z-axe line
-    start_point = np.array([-2, -95, -50]) 
-    end_point = np.array([-2, -95, 200]) 
-    line = pyvista.Line(start_point, end_point)
-    plotter.add_mesh(line, color="green", line_width=5)
-    arrow = pyvista.Arrow(start_point, end_point - start_point, scale=10)
-    plotter.add_mesh(arrow, color="red")
-
-    # z-axe line
-    start_point = np.array([-2, -50, 0]) 
-    end_point = np.array([-2, -50, 200]) 
-    line = pyvista.Line(start_point, end_point)
-    plotter.add_mesh(line, color="green", line_width=5)
-    arrow = pyvista.Arrow(start_point, end_point - start_point, scale=10)
-    plotter.add_mesh(arrow, color="red")
-    """
+    plotter.add_camera(camera)
 
     light = Light(Coordinate(-110.0, 70.0, 130.0), Color(1.0, 1.0, 1.0), 1.0)
+    plotter.add_light_source(light)
 
-    plotter.add_light(light.light)
-    plotter.show_axes()
-
-    plotter.show()
+    plotter.show_axes = True
+    plotter.render()
+    sys.exit(0)
 
 
 if __name__ == "__main__":
