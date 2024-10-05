@@ -5,7 +5,7 @@ Python library for meshes conversions and utilities for colouring the meshes.
 
 Clone the repo.
 ```
-git clone -b dev https://github.com/kerrambit/PyMesh.git & cd PyMesh
+git clone -b dev https://github.com/kerrambit/PyMesh.git && cd PyMesh
 ```
 
 Install needed dependencies.
