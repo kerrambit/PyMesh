@@ -39,16 +39,23 @@ def main():
         window_title = args.window_title
 
     try:
-        subprocess.Popen(
+        result = subprocess.Popen(
             [
                 "python3",
                 args.input_script_filepath,
                 args.input_mesh_filepath,
                 window_title,
             ],
-            shell=False,
         )
-    except subprocess.CalledProcessError as e:
+
+        result.wait()
+
+        if result.returncode != 0:
+            print(
+                f"\033[91mScript '{args.input_script_filepath}' failed to run!\033[00m"
+            )
+
+    except Exception as e:
         print(f"An error occurred while running the script. Details: '{e}'.")
 
 
