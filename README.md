@@ -10,21 +10,35 @@ Clone the repo.
 git clone -b dev https://github.com/kerrambit/PyMesh.git && cd PyMesh
 ```
 
-Install needed dependencies.
+Install needed dependencies using *pip*.
 ```
 pip install -e .
 ```
 
+---
+
 Use *convert.py* CLI application to easily convert different mesh formats.
+
+**Windows**
 ```
 python3 .\src\cli-clients\convert.py --input_file_path .\example_data\pumpkin_tall_10k.obj --output_folder_path ./example_data --output_file_format stl --debugging_info true
 ```
+**Unix**
+```
+python3 ./src/cli-clients/convert.py --input_file_path ./example_data/pumpkin_tall_10k.obj --output_folder_path ./example_data --output_file_format stl --debugging_info true
+```
 
 Use *visualize.py* CLI application to easily display the mesh. You can write your own script using PyMesh library to e.g. color the mesh.
+
+**Windows**
 ```
 python3 .\src\cli-clients\visualize.py --input_mesh_filepath .\example_data\export.stl --input_script_filepath .\example_scripts\script.py --window_title "Pumpkin visualizer"
 ```
-
+**Unix**
+```
+python3 ./src/cli-clients/visualize.py --input_mesh_filepath ./example_data/export.stl --input_script_filepath ./example_scripts/script.py --window_title "Pumpkin visualizer"
+```
+---
 Run the tests suites.
 ```
 python3 -m pytest
@@ -48,3 +62,7 @@ python3 -m pytest
 
 *Find errors and mistakes related to the task content itself (if any) and suggest possible improvements.*
 - The only thing is that I am not sure if the attached .obj file could be publicly shared inside the GitHub repository (so the user can run the example script without any problem).
+
+## Troubleshooting
+- If you have problems on Linux (WSL) with running *visualizer.py* script with error *ImportError: libGL.so.1: cannot open shared object file: No such file or directory*, try this command
+```sudo apt-get install libxrender1```.
