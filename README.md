@@ -27,9 +27,30 @@ git clone -b dev https://github.com/kerrambit/PyMesh.git
 cd PyMesh
 ```
 
-Install needed dependencies using *pip*.
+It is recommended to run the application in a virtual environment. Virtual environments provide a isolated environment for each project, preventing dependency conflicts and other problems.
+```
+python3 -m venv pymeshve
+```
+
+Activate it by running the activate script inside.
+
+**Windows**
+```
+pymeshve\Scripts\activate
+```
+**Unix**
+```
+source pymeshve/bin/activate
+```
+
+You can now install needed dependencies using *pip*.
 ```
 pip install -e .
+```
+
+After you are finished the virtual environment, you can deactivate it (you can remove the whole directory also).
+```
+deactivate
 ```
 
 ---
