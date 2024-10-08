@@ -1,13 +1,30 @@
 # PyMesh
-Python library for meshes conversions and utilities for colouring the meshes.
+Python library for mesh conversion and utilities for applying colors to meshes.
+The library features a convertor capable of handling various mesh formats and converting them as needed.
+It also includes visualizer classes that allow you to write simple scripts using custom objects without requiring knowledge of underlying libraries.
+The visualizer application then renders the script using the provided mesh model.
 
 [![PyMesh.Visualizer video](docs/pumpkin-example-photo.png)](docs/pumpkin-example-video.mp4)
+
+## Prerequisites
+Make sure you have Python3 installed. You can check by running the following command in your terminal:
+
+**Unix**
+```
+python3 --version
+```
+
+**Windows**
+```
+python --version
+```
 
 ## Build and launch
 
 Clone the repo.
 ```
-git clone -b dev https://github.com/kerrambit/PyMesh.git && cd PyMesh
+git clone -b dev https://github.com/kerrambit/PyMesh.git
+cd PyMesh
 ```
 
 Install needed dependencies using *pip*.
