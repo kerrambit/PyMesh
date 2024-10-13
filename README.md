@@ -7,7 +7,7 @@ The visualizer application then renders the script using the provided mesh model
 [![PyMesh.Visualizer video](docs/pumpkin-example-photo.png)](docs/pumpkin-example-video.mp4)
 
 ## Prerequisites
-Make sure you have Python3 installed. You can check by running the following command in your terminal:
+Make sure you have Python 3.10 or higher installed. You can check by running the following command in your terminal:
 
 **Unix**
 ```
