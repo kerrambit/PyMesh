@@ -59,11 +59,11 @@ Use *convert.py* CLI application to easily convert different mesh formats.
 
 **Windows**
 ```
-python3 .\src\cli-clients\convert.py --input_file_path .\example_data\pumpkin_tall_10k.obj --output_folder_path ./example_data --output_file_format stl --debugging_info true
+python3 .\src\cli-clients\convert.py --input_file_path .\example_data\pumpkin_tall_10k.obj --output_file_path .\example_data\export.stl --debugging_info True
 ```
 **Unix**
 ```
-python3 ./src/cli-clients/convert.py --input_file_path ./example_data/pumpkin_tall_10k.obj --output_folder_path ./example_data --output_file_format stl --debugging_info true
+python3 ./src/cli-clients/convert.py --input_file_path ./example_data/pumpkin_tall_10k.obj --output_file_path ./example_data/export.stl --debugging_info True
 ```
 
 Use *visualize.py* CLI application to easily display the mesh. You can write your own script using PyMesh library to e.g. color the mesh.
